@@ -30,16 +30,22 @@
         <section id="main-content">
           <h3>What I'm Working On</h3>
 
-<p>I've been testing pushing full application builds using ansible, and blogging about the ways that I'm doing things on <a href="http://paulsalcido.wordpress.com/">my personal blog</a>, when I actually have time to work on it.  I just got started, so it's a work in progress.</p>
+<p>I've been testing pushing full application builds using ansible, and blogging about the ways that I'm doing things on <a href="http://paulsalcido.wordpress.com/">my personal blog</a>, when I actually have time to work on it.  I just got started, so it's a work in progress.  I'm also on twitter as <a href="http://www.twitter.com/PaulCodeMonkey/">@PaulCodeMonkey</a>.</p>
 
 <h2>My repositories</h2>
 <h3>py-log-tail</h3>
 
 <p>This is a python script for tailing logs that rotate, whether they rotate in and out with dates, or if they are one file with a changing inode, this handles both and can even remember where it was if you have to stop and restart it, so it is also useful for processes that tail your logs constantly and push data someplace (as long as you override the default behavior).  I have a demo with rabbitmq also in the repository.  It also handles files that have been gzipped since your last run, and remembers its place within them as it reads, and will read all the gzipped files in order.</p>
+<p>In all honesty, I did this as a project to learn how to work with python.  It's my first python code and I decided to do something interesting with it, and the active tailing problem is something that people have to deal with a lot.  I actually use it at work for tailing logs on the development boxes when I'm working, because they have date rotations and gzip files, something that this script handles quite well.</p>
+<p>You can find the code for this at <a href="http://github.com/paulsalcido/py-log-tail/">http://github.com/paulsalcido/py-log-tail/</a>.</p>
 
 <h3>pc-webapp</h3>
 
 <p>This is a logical starting point for a web application using perl.  It has database connectivity, Google OpenID and Facebook Logins built in.  Also, the web application can deploy its entire database, and set up its first administrative user itself.  It can also track itself using RabbitMQ, Google Analytics, and it has the Twitter Bootstrap library built into it with Template Toolkit as a front end.  Perhaps I'll blog about getting a highly available model on a new web server for this application soon.</p>
+<p>You can find the code for this at <a href="http://github.com/paulsalcido/pc-webapp/">http://github.com/paulsalcido/pc-webapp/</a>.</p>
+
+<h3>pawn-broker</h3>
+<p>Writing node.js services is easy, but for a beginner, guaranteeing data quality can be difficult.  I want to write a service package that will be featureful and useful based off of a schema definition ala Perl DBIx.  There might be something out there already like this (there almost always is), but I would also like to learn node.js, so I'm writing this offline.  At the time of this writing, this is just a placeholder, but I have a number of commits offline.</a></p>
 
 <h2>What I want to do</h2>
 
