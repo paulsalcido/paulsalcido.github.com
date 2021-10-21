@@ -1,0 +1,147 @@
+
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Star Trek Episode Randomizer</h1>
+        <div id="selector_div">
+        </div>
+        <div id="result_div">
+        </div>
+        <script>
+
+        const episodes = {
+            OS: {
+                name: "Original Series",
+                seasons: [
+                    29,
+                    26,
+                    24
+                ]
+            },
+            TNG: {
+                name: "The Next Generation",
+                seasons: [
+                    26,
+                    22,
+                    26,
+                    26,
+                    26,
+                    26,
+                    26,
+                ]
+            },
+            DS9: {
+                name: "Deep Space 9",
+                seasons: [
+                    19,
+                    26,
+                    26,
+                    25,
+                    26,
+                    26,
+                    26,
+                ]
+            },
+            VOY: {
+                name: "Voyager",
+                seasons: [
+                    15,
+                    26,
+                    26,
+                    26,
+                    25,
+                    26,
+                    25
+                ]
+            },
+            ENT: {
+                name: "Enterprise",
+                seasons: [
+                    26,
+                    26,
+                    24,
+                    22
+                ]
+            },
+            DSC: {
+                name: "Discovery",
+                seasons: [
+                    15,
+                    14,
+                    13
+                ],
+            },
+            PCD: {
+                name: "Picard",
+                seasons: [
+                    10,
+                    10,
+                    10
+                ],
+            },
+            LDK: {
+                name: "Lower Decks",
+                seasons: [
+                    10,
+                    10,
+                    10
+                ],
+            }
+        };
+
+        var selector_div = document.getElementById('selector_div');
+        var result_div = document.getElementById('result_div');
+        var selectors = { };
+
+        for (const series in episodes) {
+            var series_checkbox = document.createElement('INPUT');
+            series_checkbox.setAttribute('type','checkbox');
+            series_checkbox.setAttribute('name',series);
+            series_checkbox.checked = true;
+            selectors[series] = series_checkbox;
+            var series_label = document.createElement('LABEL');
+            series_label.for = series;
+            series_label.innerHTML = episodes[series].name;
+            var container_div = document.createElement('DIV');
+            container_div.appendChild(series_checkbox);
+            container_div.appendChild(series_label);
+            selector_div.appendChild(container_div);
+        }
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+        }
+
+        function getCheckedSeries() {
+            var results = [];
+            for (const series in selectors) {
+                if ( selectors[series].checked ) {
+                    results.push(series);
+                }
+            }
+            return results;
+        }
+
+        function selectRandomSeries() {
+            var checked_series = getCheckedSeries();
+            var selected_series = getRandomInt(0, checked_series.length);
+            var series_info = episodes[checked_series[selected_series]];
+            var selected_season = getRandomInt(0, series_info['seasons'].length);
+            var selected_episode = getRandomInt(0,
+                series_info['seasons'][selected_season]);
+            var series_div = document.createElement('DIV');
+            series_div.innerHTML = series_info.name + " Season " +
+                (selected_season + 1) + " Episode " + (selected_episode + 1);
+            result_div.appendChild(series_div);
+        }
+
+        var randomize_button = document.createElement("BUTTON");
+        randomize_button.onclick = selectRandomSeries;
+        randomize_button.textContent = 'Randomize!!!';
+        selector_div.appendChild(randomize_button);
+        </script>
+    </body>
+</html>
